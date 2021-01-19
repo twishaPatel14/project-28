@@ -1,4 +1,3 @@
-
 const Engine = Matter.Engine;
 const World = Matter.World;
 const Bodies = Matter.Bodies;
@@ -8,11 +7,11 @@ const Constraint=Matter.Constraint;
 
 var treeObj, stoneObj,groundObject, launcherObject;
 var mango1,mango2,mango3,mango4,mango5,mango6,mango7,mango8,mango9,mango10,mango11,mango12;
-var world,boy,boyImg;
+var world,boy;
 var launchingForce=100;
 
 function preload(){
-  boy=loadImage("images/boy.png");
+	boy=loadImage("boy.png");
   }
 
 function setup() {
@@ -21,6 +20,7 @@ function setup() {
 	world = engine.world;
 
 	stoneObj=new stone(235,420,30); 
+
 	mango1=new mango(1100,100,30);
   mango2=new mango(1170,130,30);
 	mango3=new mango(1010,140,30);
@@ -33,12 +33,10 @@ function setup() {
 	mango10=new mango(1200,200,40);
 	mango11=new mango(1120,50,40);
 	mango12=new mango(900,160,40);
+
 	treeObj=new tree(1050,580);
 	groundObject=new ground(width/2,600,width,20);
 	launcherObject=new launcher(stoneObj.body,{x:235,y:420})
-boy= createSprite(160,150);
-boy.addImage(boyImg)
-
   var render = Render.create({
     element: document.body,
     engine: engine,
@@ -48,7 +46,7 @@ boy.addImage(boyImg)
       wireframes: false
     }
   });
-
+	
 	Engine.run(engine);
  
 }
@@ -61,6 +59,7 @@ function draw() {
   text("Press Space to get a second Chance to Play!!",50 ,50);
   image(boy ,200,340,200,300);
  
+  
 
   treeObj.display();
   stoneObj.display();
@@ -69,7 +68,7 @@ function draw() {
   mango3.display();
   mango4.display();
   mango6.display();
-  mango7.display();
+ mango7.display();
   mango8.display();
   mango9.display();
   mango10.display();
@@ -100,7 +99,8 @@ function mouseDragged()
 
 function mouseReleased()
 {
-	launcherObject.fly;
+	launcherObject.fly();
+   
 }
 
 function keyPressed() {
@@ -114,7 +114,7 @@ function keyPressed() {
 	
   mangoBodyPosition=lmango.body.position
   stoneBodyPosition=lstone.body.position
-
+  
   var distance=dist(stoneBodyPosition.x, stoneBodyPosition.y, mangoBodyPosition.x, mangoBodyPosition.y)
   
   	if(distance<=lmango.r+lstone.r)
@@ -123,4 +123,4 @@ function keyPressed() {
   	  Matter.Body.setStatic(lmango.body,false);
     }
 
-}
+  }
