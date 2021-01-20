@@ -4,8 +4,8 @@ class launcher{
 		
 		var options={ bodyA:body,			 
 			pointB:anchor, 
-			stiffness:0.004, 
-			length:1
+			stiffness:0.04, 
+			length:0.5
 			
 		}
 		
